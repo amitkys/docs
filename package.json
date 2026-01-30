@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
@@ -13,6 +16,7 @@
   },
   "dependencies": {
     "@bprogress/next": "^3.2.12",
+    "@opennextjs/cloudflare": "^1.16.1",
     "fumadocs-core": "16.4.11",
     "fumadocs-mdx": "14.2.6",
     "fumadocs-ui": "16.4.11",
@@ -23,6 +27,8 @@
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.3.13",
+    "@cloudflare/next-on-pages": "^1.13.16",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/mdx": "^2.0.13",
     "@types/node": "^25.0.10",
@@ -31,6 +37,6 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
-    "@biomejs/biome": "^2.3.13"
+    "wrangler": "^4.61.1"
   }
 }
