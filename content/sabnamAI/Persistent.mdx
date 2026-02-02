@@ -1,0 +1,80 @@
+---
+title: Data Persistence Architecture
+description: Overview of how data is persisted in SabnamAI.
+icon: AlignVerticalDistributeCenter
+---
+
+import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+
+
+## Persistence in SabnamAI
+Persistence were important concern when students attempting a test series.
+
+We must have to ensure that **test series**, **questions** and **user attempts** are stored reliably  
+and remain consistent on:
+- *Page Refresh*
+- *Internet connection lost*
+- *Closing & Reopen Browswer*
+- *Another/Different Device*
+
+### The Response that I care.
+
+
+```json
+{
+  "responses": [
+    {
+      "id": "cmkkxl7zj001w42czgk45r708",
+      "attemptId": "cmkkxl7z7001k42czda9hb795",
+      "questionId": "cmkkxl7xs000r42cz42nt41qy", // this is question id, which have question and option
+      "userAnswer": "B",
+      "timeTaken": 75
+    }
+  ]
+}
+```
+
+
+<Accordions type="single">
+  <Accordion title="Reference of Question json">
+	
+	``` 
+	
+{
+    "question": {
+          "id": "cmkkxl7xs000r42cz42nt41qy",
+          "content": {
+            "en": "The second derivative of x³ is:"
+          },
+          "type": "MCQ_SINGLE",
+          "options": [
+            {
+              "id": "A",
+              "text": "3x²",
+              "isCorrect": false
+            },
+            {
+              "id": "B",
+              "text": "6x",
+              "isCorrect": true
+            },
+            {
+              "id": "C",
+              "text": "6",
+              "isCorrect": false
+            },
+            {
+              "id": "D",
+              "text": "x²",
+              "isCorrect": false
+            }
+          ],
+			"imageURL": null
+  }
+}
+	
+	```
+	</Accordion>
+</Accordions>
+
+
