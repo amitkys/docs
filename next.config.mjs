@@ -13,6 +13,22 @@ const config = {
       },
     ];
   },
+
+  async redirects() {
+    return [
+       {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'maybedoc.id0.uk',
+          },
+        ],
+        destination: 'https://maybedocs.id0.uk/:path*',
+        permanent: true,
+      },
+    ]
+  }
 };
 
 export default withMDX(config);
