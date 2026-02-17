@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "---Introduction---",
+    "[CircleQuestionMark][What is Sabnamui](index)",
+    "[Book][Getting Started](getting-started)",
+
+    "---Components---",
+    "[Blocks][Button Component](components/button)",
+    "[Layout][Card Component](components/card)",
+    "[Palette][Theme System](components/theme)",
+
+    "---Advanced---",
+    "[Rocket][API Reference](api-reference)",
+    "[Settings][Configuration](configuration)",
+    "...",
+
+    "---External Links---",
+    "[GitHub](https://github.com)",
+    "external:[Documentation](https://fumadocs.dev)",
+    "[Globe][Vercel](https://vercel.com)",
+
+    "---Other Options---",
+    "!excluded-file",
+    "!excluded-folder",
+    "...rest-of-folder",
+    "z...a"
+  ]
+}

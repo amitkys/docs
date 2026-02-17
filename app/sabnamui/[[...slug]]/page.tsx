@@ -1,41 +1,31 @@
-import { getPageImage, sabnamUISource } from '@/lib/source';
+import { sabnamUISource } from '@/lib/source';
 import { DocsBody, DocsDescription, DocsPage, DocsTitle } from 'fumadocs-ui/layouts/docs/page';
 import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { LLMCopyButton, ViewOptions } from '@/components/ai/page-actions';
 
-// @ts-ignore
-export default async function Page(props: PageProps<'/sabnamAI/[[...slug]]'>) {
+
+interface PageProps {
+    params: Promise<{ slug?: string[] }>;
+}
+
+export default async function Page(props: PageProps) {
     const params = await props.params as { slug?: string[] };
     const page = sabnamUISource.getPage(params.slug);
     if (!page) notFound();
 
     const MDX = page.data.body;
-    const gitConfig = {
-        user: 'username',
-        repo: 'repo',
-        branch: 'main',
-    };
 
     return (
         <DocsPage toc={page.data.toc} full={page.data.full}>
-            <DocsTitle>{page.data.title}</DocsTitle>
-            <DocsDescription className="mb-0">{page.data.description}</DocsDescription>
-            <div className="flex flex-row gap-2 items-center border-b pb-6">
-                <LLMCopyButton markdownUrl={`${page.url}.mdx`} />
-                <ViewOptions
-                    markdownUrl={`${page.url}.mdx`}
-                    // update it to match your repo
-                    githubUrl={`https://github.com/${gitConfig.user}/${gitConfig.repo}/blob/${gitConfig.branch}/docs/content/sabnamAI/${page.path}`}
-                />
-            </div>
+            {page.data.title && <DocsTitle>{page.data.title}</DocsTitle>}
+            {page.data.description && <DocsDescription className="mb-0">{page.data.description}</DocsDescription>}
             <DocsBody>
                 <MDX
                     components={getMDXComponents({
                         // this allows you to link to other pages with relative file paths
-                        a: createRelativeLink(sabnamUISource, page),
+                        a: createRelativeLink(sabnamUISource, page as any),
                     })}
                 />
             </DocsBody>
@@ -47,17 +37,19 @@ export async function generateStaticParams() {
     return sabnamUISource.generateParams();
 }
 
-// @ts-ignore
-export async function generateMetadata(props: PageProps<'/sabnamAI/[[...slug]]'>): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
     const params = await props.params as { slug?: string[] };
     const page = sabnamUISource.getPage(params.slug);
     if (!page) notFound();
 
+    const segments = [...page.slugs, 'image.png'];
+    const imageUrl = `/og/sabnamui/${segments.join('/')}`;
+
     return {
-        title: page.data.title,
-        description: page.data.description,
+        title: page.data.title || 'SabnamUI Documentation',
+        description: page.data.description || 'SabnamUI component documentation',
         openGraph: {
-            images: getPageImage(page).url,
+            images: imageUrl,
         },
     };
 }

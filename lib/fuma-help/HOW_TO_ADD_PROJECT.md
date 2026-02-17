@@ -81,3 +81,7 @@ Open `lib/layout.shared.tsx` and add an entry to `docsOptions.sidebar.tabs`.
 ## 5. Add Content
 
 Create the folder `content/chat-app` and add your `index.mdx` and `meta.json` files.
+
+......................................
+// additional,
+go to this link: https://fumadocs.dev/docs/headless/page-conventions#pages (for setup text in sidebar)
