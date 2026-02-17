@@ -28,6 +28,19 @@ export const sabnamAI = defineDocs({
   },
 });
 
+export const sabnamUI = defineDocs({
+  dir: 'content/sabnamui',
+  docs: {
+    schema: frontmatterSchema,
+    postprocess: {
+      includeProcessedMarkdown: true,
+    },
+  },
+  meta: {
+    schema: metaSchema
+  }
+});
+
 export default defineConfig({
   mdxOptions: {
     // MDX options

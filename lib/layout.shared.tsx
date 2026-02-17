@@ -1,6 +1,6 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import type { DocsLayoutProps } from 'fumadocs-ui/layouts/docs';
-import { Book, Sparkles } from 'lucide-react';
+import { Book, CircleDashed, Sparkles } from 'lucide-react';
 
 export const baseOptions: BaseLayoutProps = {
   nav: {
@@ -23,6 +23,12 @@ export const docsOptions: Omit<DocsLayoutProps, 'tree'> = {
         url: '/sabnamAI',
         icon: <Sparkles className="size-4" />,
         description: 'AI Project',
+      },
+      {
+        title: 'Sabnam UI',
+        url: '/sabnamui',
+        icon: <CircleDashed className='size-4' />,
+        description: 'UI Components',
       },
     ],
   },

@@ -1,4 +1,4 @@
-import { docs, sabnamAI } from 'fumadocs-mdx:collections/server';
+import { docs, sabnamAI, sabnamUI } from 'fumadocs-mdx:collections/server';
 import { type InferPageType, loader } from 'fumadocs-core/source';
 import { lucideIconsPlugin } from 'fumadocs-core/source/lucide-icons';
 
@@ -14,6 +14,12 @@ export const sabnamAISource = loader({
   source: sabnamAI.toFumadocsSource(),
   plugins: [lucideIconsPlugin()],
 });
+
+export const sabnamUISource = loader({
+  baseUrl: '/sabnamui',
+  source: sabnamUI.toFumadocsSource(),
+  plugins: [lucideIconsPlugin()],
+})
 
 export function getPageImage(page: InferPageType<typeof source>) {
   const segments = [...page.slugs, 'image.png'];
