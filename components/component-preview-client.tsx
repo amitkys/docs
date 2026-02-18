@@ -27,7 +27,8 @@ export function ComponentPreviewClient({
         <TabsList variant={"line"} className="w-fit grid grid-cols-3">
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
-          <TabsTrigger value="source">Source</TabsTrigger>
+
+          {/* <TabsTrigger value="source">Source</TabsTrigger> */}
         </TabsList>
 
         <TabsContent
