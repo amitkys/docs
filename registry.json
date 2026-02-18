@@ -11,7 +11,7 @@
       "files": [
         {
           "path": "registry/items/button.tsx",
-          "type": "registry:ui"
+          "type": "registry:component"
         }
       ]
     }
