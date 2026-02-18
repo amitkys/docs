@@ -1,95 +1,116 @@
-import * as React from "react"
-import { promises as fs } from "fs"
-import path from "path"
-import { registry } from "@/registry/index"
-import { ComponentPreviewClient } from "@/components/component-preview-client"
+import * as React from "react";
+import { promises as fs } from "fs";
+import path from "path";
+import { ComponentPreviewClient } from "@/components/component-preview-client";
 
 interface ComponentPreviewProps {
-    name: string
+  name: string;
 }
 
 export async function ComponentPreview({ name }: ComponentPreviewProps) {
-    // 1. Resolve components
-    const components: { name: string; Component: React.ComponentType<any>; filePath: string }[] = []
+  // 1. Parse name (expecting "component/example" or just "component")
+  let componentName = name;
+  let exampleName = "";
 
-    // Check registry first (backward compatibility)
-    if (registry[name]) {
-        components.push({
-            name,
-            Component: registry[name],
-            filePath: path.join(process.cwd(), "registry", name, `${name}.tsx`),
-        })
+  if (name.includes("/")) {
+    const parts = name.split("/");
+    componentName = parts[0];
+    exampleName = parts[1];
+  }
+
+  // 2. Read Component Source (from items)
+  const itemsDir = path.join(process.cwd(), "registry", "items");
+  const componentPath = path.join(itemsDir, `${componentName}.tsx`);
+
+  let componentCode = "";
+  try {
+    componentCode = await fs.readFile(componentPath, "utf-8");
+  } catch (error) {
+    console.error(`Component source not found: ${componentPath}`, error);
+    componentCode = `// Component source not found for ${componentName}\n// Please ensure registry/items/${componentName}.tsx exists.`;
+  }
+
+  // 3. Find Examples
+  const examplesDir = path.join(
+    process.cwd(),
+    "registry",
+    "examples",
+    componentName,
+  );
+
+  const examples: {
+    name: string;
+    Component: React.ComponentType<any>;
+    code: string;
+  }[] = [];
+
+  try {
+    if (exampleName) {
+      // Specific example
+      const filePath = path.join(examplesDir, `${exampleName}.tsx`);
+      const code = await fs.readFile(filePath, "utf-8");
+
+      // Dynamic import
+      const mod = await import(
+        `@/registry/examples/${componentName}/${exampleName}`
+      );
+
+      examples.push({
+        name: exampleName,
+        Component: mod.default,
+        code: code,
+      });
     } else {
-        const registryRoot = path.join(process.cwd(), "registry")
-        const targetPath = path.join(registryRoot, name)
+      // All examples in directory
+      try {
+        const files = await fs.readdir(examplesDir);
+        for (const file of files) {
+          if (file.endsWith(".tsx")) {
+            const exName = file.replace(".tsx", "");
+            const filePath = path.join(examplesDir, file);
+            const code = await fs.readFile(filePath, "utf-8");
+            const mod = await import(
+              `@/registry/examples/${componentName}/${exName}`
+            );
 
-        try {
-            // Check if directory
-            const stats = await fs.stat(targetPath)
-            if (stats.isDirectory()) {
-                const files = (await fs.readdir(targetPath)).filter((file) => file.endsWith(".tsx"))
-
-                for (const file of files) {
-                    const componentName = file.replace(".tsx", "")
-                    const importPath = `@/registry/${name}/${componentName}`
-                    try {
-                        const mod = await import(`@/registry/${name}/${componentName}`) // Dynamic import
-                        components.push({
-                            name: componentName,
-                            Component: mod.default,
-                            filePath: path.join(targetPath, file),
-                        })
-                    } catch (error) {
-                        console.error(`Failed to dynamic import: ${importPath}`, error)
-                    }
-                }
-            }
-        } catch {
-            // If not directory, check if file
-            try {
-                const filePath = `${targetPath}.tsx`
-                await fs.stat(filePath)
-
-                const mod = await import(`@/registry/${name}`)
-                components.push({
-                    name: path.basename(name),
-                    Component: mod.default,
-                    filePath,
-                })
-            } catch {
-                // Not found
-            }
+            examples.push({
+              name: exName,
+              Component: mod.default,
+              code: code,
+            });
+          }
         }
+      } catch (e) {
+        console.error(`Modules not found in: ${examplesDir}`, e);
+      }
     }
+  } catch (error) {
+    console.error(`Failed to load examples for ${name}`, error);
+  }
 
-    if (components.length === 0) {
-        return (
-            <div className="text-sm text-muted-foreground">
-                Component "{name}" not found in registry.
-            </div>
-        )
-    }
-
-    // 2. Render previews
+  if (examples.length === 0) {
     return (
-        <div className="flex flex-col gap-4">
-            {await Promise.all(
-                components.map(async ({ name: componentName, Component, filePath }) => {
-                    let code = ""
-                    try {
-                        code = await fs.readFile(filePath, "utf-8")
-                        code = code.replace(/from "@\/registry\/.*"/g, 'from "@/components/ui/..."')
-                    } catch {
-                        code = `Error reading file: ${filePath}`
-                    }
+      <div className="text-sm text-muted-foreground p-4 border rounded-md bg-muted/20">
+        Component "{name}" not found in registry.
+        <br />
+        Checked examples in: <code>registry/examples/{name}</code>
+      </div>
+    );
+  }
 
-                    return (
-                        <ComponentPreviewClient key={filePath} componentName={componentName} code={code}>
-                            <Component />
-                        </ComponentPreviewClient>
-                    )
-                })
-            )}
-        </div>
-    )
+  return (
+    <div className="flex flex-col gap-10">
+      {examples.map((example) => (
+        <ComponentPreviewClient
+          key={example.name}
+          componentName={componentName} // Main component name (e.g., "button")
+          exampleName={example.name} // Example name (e.g., "basic")
+          componentCode={componentCode}
+          exampleCode={example.code}
+        >
+          <example.Component />
+        </ComponentPreviewClient>
+      ))}
+    </div>
+  );
 }

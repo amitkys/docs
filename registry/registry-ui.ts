@@ -7,10 +7,10 @@ export type RegistryItem = {
 }
 
 export const registry: Record<string, RegistryItem> = {
-    "hello-world": {
-        name: "hello-world",
+    "button": {
+        name: "button",
         type: "components:ui",
-        dependencies: ["lucide-react"],
-        files: ["registry/hello-world/hello-world.tsx"],
+        dependencies: ["@radix-ui/react-slot", "class-variance-authority"],
+        files: ["registry/items/button.tsx"],
     },
 }

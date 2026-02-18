@@ -4,13 +4,13 @@
   "homepage": "https://acme.com",
   "items": [
     {
-      "name": "hello-world",
+      "name": "button",
       "type": "registry:block",
-      "title": "Hello World",
-      "description": "A simple hello world component.",
+      "title": "Button",
+      "description": "A simple button component.",
       "files": [
         {
-          "path": "registry/hello-world/hello-world.tsx",
+          "path": "registry/items/button.tsx",
           "type": "registry:component"
         }
       ]
