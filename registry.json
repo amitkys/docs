@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "maybedocs.id0.uk/sabnamui",
-  "homepage": "https://acme.com",
+  "name": "sabnamui",
+  "homepage": "https://maybedocs.id0.uk/sabnamui",
   "items": [
     {
       "name": "button",
@@ -11,7 +11,7 @@
       "files": [
         {
           "path": "registry/items/button.tsx",
-          "type": "registry:component"
+          "type": "registry:component/you-i"
         }
       ]
     }
