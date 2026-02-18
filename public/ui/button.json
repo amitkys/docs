@@ -10,5 +10,5 @@
       "type": "registry:component"
     }
   ],
-  "type": "registry:block"
+  "type": "registry:ui"
 }

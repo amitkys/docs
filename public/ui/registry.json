@@ -1,11 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "maybedocs.id0.uk/sabnamui",
-  "homepage": "https://acme.com",
+  "name": "sabnamui",
+  "homepage": "https://maybedocs.id0.uk/sabnamui",
   "items": [
     {
       "name": "button",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Button",
       "description": "A simple button component.",
       "files": [

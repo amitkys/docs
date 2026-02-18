@@ -5,7 +5,7 @@
   "items": [
     {
       "name": "button",
-      "type": "registry:block",
+      "type": "registry:ui",
       "title": "Button",
       "description": "A simple button component.",
       "files": [
