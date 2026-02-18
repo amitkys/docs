@@ -5,13 +5,13 @@
   "items": [
     {
       "name": "button",
-      "type": "registry:ui",
+      "type": "registry:component",
       "title": "Button",
       "description": "A simple button component.",
       "files": [
         {
           "path": "registry/items/button.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     }
