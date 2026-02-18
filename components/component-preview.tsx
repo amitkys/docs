@@ -98,6 +98,16 @@ export async function ComponentPreview({ name }: ComponentPreviewProps) {
     );
   }
 
+  // Helper to convert 4-space indentation to 2-space
+  const processCode = (code: string) => {
+    return code.replace(/^(?:    )+/gm, (match) =>
+      "  ".repeat(match.length / 4),
+    );
+  };
+
+  // Optimize component code indentation
+  componentCode = processCode(componentCode);
+
   return (
     <div className="flex flex-col gap-10">
       {examples.map((example) => (
@@ -106,7 +116,7 @@ export async function ComponentPreview({ name }: ComponentPreviewProps) {
           componentName={componentName} // Main component name (e.g., "button")
           exampleName={example.name} // Example name (e.g., "basic")
           componentCode={componentCode}
-          exampleCode={example.code}
+          exampleCode={processCode(example.code)}
         >
           <example.Component />
         </ComponentPreviewClient>
