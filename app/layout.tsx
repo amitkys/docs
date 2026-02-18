@@ -1,16 +1,36 @@
-import { RootProvider } from 'fumadocs-ui/provider/next';
-import './global.css';
-import { Geist } from 'next/font/google';
-import BProgressProviders from '@/components/provider/bprogress';
+import { RootProvider } from "fumadocs-ui/provider/next";
+import Script from "next/script";
+import "./global.css";
+import { Geist } from "next/font/google";
+import BProgressProviders from "@/components/provider/bprogress";
 
 const geist = Geist({
-  subsets: ['latin'],
-  variable: '--font-sans',
-})
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
-export default function Layout({ children }: LayoutProps<'/'>) {
+declare global {
+  interface Window {
+    dataLayer: any[];
+  }
+}
+
+export default function Layout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={` ${geist.className}`} suppressHydrationWarning>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-MY71Z7LWSC"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-MY71Z7LWSC');
+        `}
+      </Script>
       <body className="flex flex-col min-h-screen">
         <RootProvider>
           <BProgressProviders>{children}</BProgressProviders>
