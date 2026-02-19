@@ -15,8 +15,10 @@
   "dependencies": {
     "@bprogress/next": "^3.2.12",
     "@opennextjs/cloudflare": "^1.16.1",
+    "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.34.2",
     "fumadocs-core": "16.4.11",
     "fumadocs-mdx": "14.2.6",
     "fumadocs-ui": "16.4.11",

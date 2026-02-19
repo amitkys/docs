@@ -33,3 +33,40 @@ You can use any platform that solves your problem best.
 - **AI Integration:** You don't have to paste things here and there. 
 
 - **Absolutely Free:** No charges for *questions* or *AI features*.
+
+## Install fumadoc
+
+```bash tab="npm"
+npx shadcn@latest add @sabnamui/button
+```
+
+```bash tab="pnpm"
+pnpm dlx shadcn@latest add @sabnamui/button
+```
+
+```bash tab="yarn"
+yarn shadcn@latest add @sabnamui/button
+```
+
+```bash tab="bun"
+bunx --bun shadcn@latest add @sabnamui/button
+```
+
+## some code
+
+```mdx
+import { HomeIcon } from 'lucide-react';
+
+<Cards>
+  <Card
+    href="https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating"
+    title="Fetching, Caching, and Revalidating"
+  >
+    Learn more about caching in Next.js
+  </Card>
+  <Card title="href is optional">Learn more about `fetch` in Next.js.</Card>
+  <Card icon={<HomeIcon />} href="/" title="Home">
+    You can include icons too.
+  </Card>
+</Cards>
+```
