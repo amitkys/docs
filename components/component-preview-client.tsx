@@ -35,7 +35,7 @@ export function ComponentPreviewClient({
           value="preview"
           className="relative rounded-md border mt-2"
         >
-          <div className="flex items-center justify-center p-10 min-h-[350px]">
+          <div className="flex items-center justify-center p-10 min-h-64">
             {children}
           </div>
         </TabsContent>

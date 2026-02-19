@@ -1,3 +1,9 @@
 {
-  "pages": ["---Components---", "button", "loader"]
+  "pages": [
+    "---Getting Started---",
+    "initialization",
+    "---Components---",
+    "button",
+    "loader"
+  ]
 }
