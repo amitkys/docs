@@ -14,6 +14,19 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "loader",
+      "type": "registry:component",
+      "title": "Loader",
+      "description": "A simple loader component.",
+      "files": [
+        {
+          "path": "registry/items/loader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["react-aria-components"]
     }
   ]
 }

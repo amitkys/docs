@@ -6,7 +6,7 @@
   "tailwind": {
     "config": "",
     "css": "app/global.css",
-    "baseColor": "stone",
+    "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
   },
@@ -19,7 +19,5 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "registries": {
-    "@sabnamui": "https://maybedocs.id0.uk/ui/{name}.json"
-  }
+  "registries": {}
 }
