@@ -19,5 +19,7 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "registries": {}
+  "registries": {
+    "@sabnamui": "https://maybedocs.id0.uk/ui/{name}.json"
+}
 }
