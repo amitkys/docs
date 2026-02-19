@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Loader } from "@/registry/items/loader";
-import { GitBranch, BadgeCheck } from "lucide-react";
+import { Button } from "@registry/items/button";
+import { Camera } from "lucide-react";
 
 export default function ButtonWithIcon() {
   return <Button variant="outline">Button</Button>;
