@@ -13,7 +13,8 @@
           "path": "registry/items/button.tsx",
           "type": "registry:ui"
         }
-      ]
+      ],
+      "dependencies": ["@radix-ui/react-slot", "class-variance-authority"]
     },
     {
       "name": "loader",

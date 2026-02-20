@@ -1,14 +1,13 @@
-import { Button } from "@/registry/items/button";
-import { Loader } from "@/registry/items/loader";
-import { Camera } from "lucide-react";
+"use client";
+import { Tab, Tabs } from "fumadocs-ui/components/tabs";
 
 export default function Page() {
   return (
     <div>
-      <Button size={"lg"}>
-        {/* <Loader /> */}
-        <Camera /> Hi there
-      </Button>
+      <Tabs items={["Tab 1", "Tab 2"]}>
+        <Tab value="Tab 1">Content for Tab 1</Tab>
+        <Tab value="Tab 2">Content for Tab 2</Tab>
+      </Tabs>
     </div>
   );
 }

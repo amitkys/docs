@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { DynamicCodeBlock } from "fumadocs-ui/components/dynamic-codeblock"
+import { usePackageManager, type PackageManager } from "@/lib/use-package-manager"
 
 interface InstallationTabsProps {
     items: string[]
@@ -19,6 +20,13 @@ export function InstallationTabs({
     dependencyCommands,
     registryDependencies,
 }: InstallationTabsProps) {
+    const { packageManager, setPackageManager } = usePackageManager()
+    const [mounted, setMounted] = React.useState(false)
+
+    React.useEffect(() => {
+        setMounted(true)
+    }, [])
+
     return (
         <Tabs defaultValue="cli" className="relative w-full border rounded-lg overflow-hidden">
             <div className="flex items-center justify-between px-4 bg-muted/50 border-b">
@@ -39,7 +47,7 @@ export function InstallationTabs({
             </div>
 
             <TabsContent value="cli" className="p-4 bg-background border-none m-0">
-                <Tabs defaultValue="npm" className="relative w-full">
+                <Tabs value={mounted ? packageManager : "npm"} onValueChange={(value) => setPackageManager(value as PackageManager)} className="relative w-full">
                     <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0 mb-4">
                         <TabsTrigger value="npm" className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-2 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none">npm</TabsTrigger>
                         <TabsTrigger value="pnpm" className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-2 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none">pnpm</TabsTrigger>
@@ -94,7 +102,7 @@ export function InstallationTabs({
                 {Object.values(dependencyCommands).some(cmd => cmd) && (
                     <div className="space-y-2">
                         <h4 className="font-medium text-sm">Install dependencies</h4>
-                        <Tabs defaultValue="npm" className="relative w-full">
+                        <Tabs value={mounted ? packageManager : "npm"} onValueChange={(value) => setPackageManager(value as PackageManager)} className="relative w-full">
                             <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0 mb-4">
                                 <TabsTrigger value="npm" className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-2 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none">npm</TabsTrigger>
                                 <TabsTrigger value="pnpm" className="relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-2 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none">pnpm</TabsTrigger>
