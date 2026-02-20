@@ -4,6 +4,7 @@
     "initialization",
     "---Components---",
     "button",
-    "loader"
+    "loader",
+    "alert-dialog"
   ]
 }

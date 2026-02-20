@@ -27,6 +27,19 @@
         }
       ],
       "dependencies": ["react-aria-components"]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:component",
+      "title": "Alert Dialog",
+      "description": "A simple alert dialog component.",
+      "files": [
+        {
+          "path": "registry/items/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": ["radix-ui"]
     }
   ]
 }
