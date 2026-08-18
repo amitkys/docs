@@ -65,43 +65,45 @@
         "@radix-ui/react-avatar"
       ]
     },
-   {
-  "name": "admin-panel",
-  "type": "registry:block",
-  "title": "Admin Panel",
-  "description": "Complete modular Admin Panel with collapsible sidebar, navbar, and layouts.",
-  "files": [
-    { "path": "components/admin-panel/admin-panel-layout.tsx", "type": "registry:component" },
-    { "path": "components/admin-panel/sidebar.tsx", "type": "registry:component" },
-    { "path": "components/admin-panel/menu.tsx", "type": "registry:component" },
-    { "path": "components/admin-panel/collapse-menu-button.tsx", "type": "registry:component" },
-    { "path": "components/admin-panel/sidebar-toggle.tsx", "type": "registry:component" },
-    { "path": "components/admin-panel/navbar.tsx", "type": "registry:component" },
-    { "path": "components/admin-panel/sheet-menu.tsx", "type": "registry:component" },
-    { "path": "components/admin-panel/user-nav.tsx", "type": "registry:component" },
-    { "path": "components/admin-panel/content-layout.tsx", "type": "registry:component" },
-    { "path": "components/admin-panel/footer.tsx", "type": "registry:component" },
-    { "path": "hooks/use-sidebar.ts", "type": "registry:hook" },
-    { "path": "hooks/use-store.ts", "type": "registry:hook" },
-    { "path": "lib/menu-list.ts", "type": "registry:lib" }
-  ],
-  "dependencies": [
-    "lucide-react",
-    "zustand",
-    "immer"
-  ],
-  "registryDependencies": [
-    "button",
-    "avatar",
-    "dropdown-menu",
-    "sheet",
-    "tooltip",
-    "scroll-area",
-    "collapsible",
-    "dialog",
-    "separator",
-    "badge"
-  ]
-}
+    {
+      "name": "admin-panel",
+      "type": "registry:block",
+      "title": "Admin Panel",
+      "description": "Complete modular Admin Panel with collapsible sidebar, navbar, and layouts.",
+      "files": [
+        { "path": "components/admin-panel/admin-panel-layout.tsx", "type": "registry:component" },
+        { "path": "components/admin-panel/sidebar.tsx", "type": "registry:component" },
+        { "path": "components/admin-panel/menu.tsx", "type": "registry:component" },
+        { "path": "components/admin-panel/collapse-menu-button.tsx", "type": "registry:component" },
+        { "path": "components/admin-panel/sidebar-toggle.tsx", "type": "registry:component" },
+        { "path": "components/admin-panel/navbar.tsx", "type": "registry:component" },
+        { "path": "components/admin-panel/sheet-menu.tsx", "type": "registry:component" },
+        { "path": "components/admin-panel/user-nav.tsx", "type": "registry:component" },
+        { "path": "components/admin-panel/content-layout.tsx", "type": "registry:component" },
+        { "path": "components/admin-panel/footer.tsx", "type": "registry:component" },
+        { "path": "components/mode-toggle.tsx", "type": "registry:component" },
+        { "path": "hooks/use-sidebar.ts", "type": "registry:hook" },
+        { "path": "hooks/use-store.ts", "type": "registry:hook" },
+        { "path": "lib/menu-list.ts", "type": "registry:lib" }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "zustand",
+        "immer",
+        "next-themes"
+      ],
+      "registryDependencies": [
+        "button",
+        "avatar",
+        "dropdown-menu",
+        "sheet",
+        "tooltip",
+        "scroll-area",
+        "collapsible",
+        "dialog",
+        "separator",
+        "badge"
+      ]
+    }
   ]
 }
