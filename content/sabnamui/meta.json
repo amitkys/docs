@@ -6,6 +6,7 @@
     "button",
     "loader",
     "alert-dialog",
-    "sidebar"
+    "sidebar",
+    "admin-panel"
   ]
 }

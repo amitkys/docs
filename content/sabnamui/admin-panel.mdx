@@ -1,0 +1,37 @@
+---
+title: Admin Panel
+description: Complete modular Admin Panel layout featuring a collapsible sidebar, navbar, submenus, dark mode toggle, and persistent state.
+---
+
+import { ComponentPreview } from "@/components/component-preview"
+
+## Preview
+
+<ComponentPreview name="admin-panel/basic" />
+
+## Installation
+
+```bash tab="npm"
+npx shadcn@latest add @sabnamui/admin-panel
+```
+
+```bash tab="pnpm"
+pnpm dlx shadcn@latest add @sabnamui/admin-panel
+```
+
+```bash tab="yarn"
+yarn shadcn@latest add @sabnamui/admin-panel
+```
+
+```bash tab="bun"
+bunx --bun shadcn@latest add @sabnamui/admin-panel
+```
+
+## Structure
+
+The Admin Panel includes modular components copied directly from `shadcn-ui-sidebar`:
+
+- **Layouts**: `AdminPanelLayout` & `ContentLayout`
+- **Sidebar**: `Sidebar`, `Menu`, `CollapseMenuButton`, `SidebarToggle`, `SheetMenu` (mobile navigation)
+- **Header & Navigation**: `Navbar`, `UserNav`, `ModeToggle`
+- **State & Helpers**: `useSidebar` hook (Zustand + `immer`), `useStore` hydration wrapper, and `getMenuList` helper

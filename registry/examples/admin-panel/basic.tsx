@@ -3,7 +3,7 @@
 import { AdminPanelLayout } from "@/components/admin-panel/admin-panel-layout";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
 
-export default function SidebarBasicDemo() {
+export default function AdminPanelDemo() {
   return (
     <div className="relative w-full h-[540px] rounded-lg border overflow-hidden bg-background shadow-sm">
       <AdminPanelLayout isEmbedded>
