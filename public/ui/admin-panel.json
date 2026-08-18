@@ -6,13 +6,19 @@
   "dependencies": [
     "lucide-react",
     "zustand",
-    "immer",
-    "@radix-ui/react-collapsible",
-    "@radix-ui/react-dropdown-menu",
-    "@radix-ui/react-scroll-area",
-    "@radix-ui/react-tooltip",
-    "@radix-ui/react-dialog",
-    "@radix-ui/react-avatar"
+    "immer"
+  ],
+  "registryDependencies": [
+    "button",
+    "avatar",
+    "dropdown-menu",
+    "sheet",
+    "tooltip",
+    "scroll-area",
+    "collapsible",
+    "dialog",
+    "separator",
+    "badge"
   ],
   "files": [
     {
