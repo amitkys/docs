@@ -84,7 +84,17 @@
         { "path": "components/mode-toggle.tsx", "type": "registry:component" },
         { "path": "hooks/use-sidebar.ts", "type": "registry:hook" },
         { "path": "hooks/use-store.ts", "type": "registry:hook" },
-        { "path": "lib/menu-list.ts", "type": "registry:lib" }
+        { "path": "lib/menu-list.ts", "type": "registry:lib" },
+        {
+          "path": "app/(admin-testing)/layout.tsx",
+          "type": "registry:page",
+          "target": "app/(admin-testing)/layout.tsx"
+        },
+        {
+          "path": "app/(admin-testing)/admin-testing/page.tsx",
+          "type": "registry:page",
+          "target": "app/(admin-testing)/admin-testing/page.tsx"
+        }
       ],
       "dependencies": [
         "lucide-react",
