@@ -1,12 +1,9 @@
 {
   "pages": [
-    "---Getting Started---",
-    "initialization",
     "---Components---",
     "button",
     "loader",
     "alert-dialog",
-    "sidebar",
     "admin-panel"
   ]
 }

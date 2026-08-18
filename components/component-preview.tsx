@@ -25,8 +25,7 @@ export async function ComponentPreview({ name }: ComponentPreviewProps) {
   let componentCode = "";
   try {
     componentCode = await fs.readFile(componentPath, "utf-8");
-  } catch (error) {
-    console.error(`Component source not found: ${componentPath}`, error);
+  } catch (_error) {
     componentCode = `// Component source not found for ${componentName}\n// Please ensure registry/items/${componentName}.tsx exists.`;
   }
 

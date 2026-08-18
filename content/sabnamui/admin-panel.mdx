@@ -12,19 +12,19 @@ import { ComponentPreview } from "@/components/component-preview"
 ## Installation
 
 ```bash tab="npm"
-npx shadcn@latest add @sabnamui/admin-panel
+npx shadcn@latest add "https://maybedocs.id0.uk/ui/admin-panel.json"
 ```
 
 ```bash tab="pnpm"
-pnpm dlx shadcn@latest add @sabnamui/admin-panel
+pnpm dlx shadcn@latest add "https://maybedocs.id0.uk/ui/admin-panel.json"
 ```
 
 ```bash tab="yarn"
-yarn shadcn@latest add @sabnamui/admin-panel
+yarn shadcn@latest add "https://maybedocs.id0.uk/ui/admin-panel.json"
 ```
 
 ```bash tab="bun"
-bunx --bun shadcn@latest add @sabnamui/admin-panel
+bunx --bun shadcn@latest add "https://maybedocs.id0.uk/ui/admin-panel.json"
 ```
 
 ## Structure
@@ -35,3 +35,82 @@ The Admin Panel includes modular components copied directly from `shadcn-ui-side
 - **Sidebar**: `Sidebar`, `Menu`, `CollapseMenuButton`, `SidebarToggle`, `SheetMenu` (mobile navigation)
 - **Header & Navigation**: `Navbar`, `UserNav`, `ModeToggle`
 - **State & Helpers**: `useSidebar` hook (Zustand + `immer`), `useStore` hydration wrapper, and `getMenuList` helper
+
+## Usage
+
+### 1. Pre-configured Test Route
+
+When you install the block, pre-configured testing routes are automatically added to your project:
+- **Layout**: `app/(admin-testing)/layout.tsx`
+- **Page**: `app/(admin-testing)/admin-testing/page.tsx`
+
+Start your dev server (`npm run dev` or `bun dev`) and navigate to `/admin-testing` to test the full layout, sidebar toggles, and dark mode controls live in your browser.
+
+### 2. Wrap Dashboard Routes with `AdminPanelLayout`
+
+To apply the Admin Panel system to your dashboard or admin section, return `<AdminPanelLayout>` inside your route layout:
+
+```tsx title="app/dashboard/layout.tsx"
+import AdminPanelLayout from "@/components/admin-panel/admin-panel-layout";
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <AdminPanelLayout>{children}</AdminPanelLayout>;
+}
+```
+
+### 3. Wrap Pages with `ContentLayout`
+
+Use `<ContentLayout>` in your pages to automatically render the top `Navbar` with page title, theme switcher, and mobile menu:
+
+```tsx title="app/dashboard/page.tsx"
+import { ContentLayout } from "@/components/admin-panel/content-layout";
+
+export default function DashboardPage() {
+  return (
+    <ContentLayout title="Dashboard Overview">
+      <div className="flex flex-col gap-4">
+        <h2 className="text-xl font-bold">Welcome Back</h2>
+        {/* Your main dashboard view */}
+      </div>
+    </ContentLayout>
+  );
+}
+```
+
+### 4. Customizing Navigation Items
+
+Update your navigation menu structure, icons, route paths, and nested submenus in `lib/menu-list.ts`:
+
+```ts title="lib/menu-list.ts"
+export function getMenuList(pathname: string) {
+  return [
+    {
+      groupLabel: "",
+      menus: [
+        {
+          href: "/dashboard",
+          label: "Dashboard",
+          active: pathname === "/dashboard",
+          icon: LayoutGrid,
+          submenus: []
+        }
+      ]
+    },
+    {
+      groupLabel: "Contents",
+      menus: [
+        {
+          href: "/posts",
+          label: "Posts",
+          active: pathname.startsWith("/posts"),
+          icon: SquarePen
+        }
+      ]
+    }
+  ];
+}
+```
