@@ -41,6 +41,27 @@
         }
       ],
       "dependencies": ["radix-ui"]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:component",
+      "title": "Sidebar",
+      "description": "A responsive, collapsible admin panel sidebar component.",
+      "files": [
+        {
+          "path": "registry/items/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "zustand",
+        "@radix-ui/react-collapsible",
+        "@radix-ui/react-dropdown-menu",
+        "@radix-ui/react-scroll-area",
+        "@radix-ui/react-tooltip",
+        "@radix-ui/react-dialog"
+      ]
     }
   ]
 }

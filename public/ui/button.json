@@ -3,6 +3,10 @@
   "name": "button",
   "title": "Button",
   "description": "A simple button component.",
+  "dependencies": [
+    "@radix-ui/react-slot",
+    "class-variance-authority"
+  ],
   "files": [
     {
       "path": "registry/items/button.tsx",

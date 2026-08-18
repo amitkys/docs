@@ -5,6 +5,7 @@
     "---Components---",
     "button",
     "loader",
-    "alert-dialog"
+    "alert-dialog",
+    "sidebar"
   ]
 }
